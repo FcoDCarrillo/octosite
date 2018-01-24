@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://use.fontawesome.com/1c5d11a09f.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: accidentalpres;
+            src: url("accid___.ttf")
+        }
+
+        .bg {
+            position: fixed;
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            content: "";
+            left: 0;
+            top: 0;
+            z-index: -1000;
+            background: no-repeat url("fondo.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: accidentalpres;
+        }
+
+        .logo-section {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            font-family: accidentalpres;
+            font-size: 36px;
+        }
+
+        .logo {
+            width: 200px;
+        }
+
+        .nombre {
+            width: 300px;
+        }
+
+        .container {
+            height: 200vh;
+        }
+
+        .slogan {
+            color: white;
+            margin-top: -5px;
+            position: relative;
+        }
+
+        .slogan:after {
+            content: url("trazo-25.svg");
+            position: absolute;
+            transform: scale(.25);
+            bottom: -38px;
+            left: -15px;
+        }
+
+        .mail-section {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            font-family: accidentalpres;
+            font-size: 24px;
+            color: grey;
+        }
+
+        .forma {
+            margin: 20px;
+        }
+
+        .message textarea {
+            height: 200px;
+            width: 100%;
+            resize: none;
+            overflow-x: hidden;
+        }
+
+        input,
+        textarea {
+            box-sizing: border-box;
+            height: 30px;
+            color: black;
+            font-family: accidentalpres;
+            font-size: 24px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .frase {
+            color: white;
+            font-size: 36px;
+        }
+
+        .flecha {
+            width: 60px;
+            transform: translateY(25px);
+        }
+
+        .barra i {
+            color: white;
+            font-size: 36px;
+            position: relative;
+            right: 0;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .barra {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 100%;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            padding-right: 10px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+        }
+
+        .email-form {
+            display: grid;
+            grid-template: 80px auto 80px / repeat(2, 400px);
+        }
+
+        .email-form :nth-child(1) {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        .email-form :nth-child(2) {
+            grid-column: 2 / -1;
+            grid-row: 1 / 2;
+        }
+
+        .email-form .message {
+            grid-column: 1 / -1;
+            grid-row: 2 / 3;
+            
+        }
+
+        .email-form .buttons {
+            grid-column: 1 / -1;
+            grid-row: 3 / 4;
+            display: flex;
+            
+        }
+
+        .email-form div {
+            padding: 10px;
+        }
+
+        .botonEnviar {
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            display: inline-block;
+            font-size: 24px;
+            cursor: pointer;
+            font-family: accidentalpres;
+        }
+
+        .botonLimpiar{
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+            background-color: transparent;
+            border-color:transparent;
+            text-decoration-line: underline;
+            padding: 15px 32px;
+            margin-left: 10px;
+            font-size: 24px;
+            color:grey;
+            cursor: pointer;
+            font-family: accidentalpres;
+
+        }
+
+        .botonLimpiar:focus{
+            outline: 0;
+        }
+
+        .botonLimpiar:hover{
+            color:white;
+        }
+
+        .botonEnviar:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .barra a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .barra a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+    </div>
+
+    <div class="container">
+        <section class="logo-section">
+            <div>
+                <img src="logoOctatum-24.svg" class="logo" alt="logo">
+            </div>
+            <div>
+                <img src="nombreOCtatum-22.svg" class="nombre" alt="nombre">
+            </div>
+            <div class="slogan">
+                discutimos ideas
+            </div>
+        </section>
+        <section class="mail-section" id="mail-section">
+            <div class="frase">
+                ¿necesitas un sitio web?
+                <img src="flecha-26.svg" class="flecha" alt="">
+            </div>
+            <form action="">
+                <div class="forma">
+                    <div class="email-form">
+                        <div>
+                            <label for="name">nombre</label>
+                            <input id="name" name="name" type="text" required>
+                        </div>
+                        <div>
+                            <label for="email">email</label>
+                            <input id="email" name="email" type="text" required>
+                        </div>
+                        <div class="message">
+                            <label for="message">mensaje</label>
+                            <br>
+                            <textarea name="message" id="message"></textarea>
+                        </div>
+                        <div class="buttons">
+                            <button class="botonEnviar" type="submit">Enviar</button>
+                            <button class="botonLimpiar" type="reset">Reset</button>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </section>
+    </div>
+    <div class="barra">
+        <a data-section="mail-section">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+        </a>
+    </div>
+    <script>
+        const navbarLinks = document.querySelectorAll("a[data-section]");
+
+        navbarLinks.forEach(link => link.addEventListener('click', event => {
+            event.preventDefault();
+
+            document.getElementById(link.dataset.section).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }));
+    </script>
+
+
+</body>
+
+</html>
