@@ -1,0 +1,5 @@
+**/node_modules/*
+**/.firebaserc
+*/npm-debug.log
+*~
+firebase-debug.log

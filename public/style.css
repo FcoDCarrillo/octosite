@@ -1,0 +1,228 @@
+html,
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: accidentalpres;
+    src: url("accid___.ttf")
+}
+
+section {
+  min-height: 700px;
+}
+
+.bg {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: -1000;
+    background: no-repeat url("assets/fondo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: accidentalpres;
+}
+
+.logo-section {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: accidentalpres;
+    font-size: 36px;
+}
+
+.logo {
+    width: 200px;
+}
+
+.nombre {
+    width: 300px;
+}
+
+.container {
+    height: 200vh;
+}
+
+.slogan {
+    color: white;
+    margin-top: -5px;
+    position: relative;
+}
+
+.slogan:after {
+    content: url("assets/trazo.svg");
+    position: absolute;
+    transform: scale(.25);
+    bottom: -38px;
+    left: -15px;
+}
+
+.email-section {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: accidentalpres;
+    font-size: 24px;
+    color: grey;
+}
+
+.forma {
+    margin: 20px;
+}
+
+.message textarea {
+    height: 200px;
+    width: 100%;
+    resize: none;
+    overflow-x: hidden;
+}
+
+input,
+textarea {
+    box-sizing: border-box;
+    height: 30px;
+    color: black;
+    font-family: sans-serif;
+    font-size: 18px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.frase {
+    color: white;
+    font-size: 36px;
+}
+
+.flecha {
+    width: 60px;
+    transform: translateY(25px);
+}
+
+.nav i {
+    color: white;
+    font-size: 36px;
+    position: relative;
+    right: 0;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    transition: 0.3s linear all;
+}
+
+.email-form {
+    display: grid;
+    grid-template: 90px auto 100px 80px / repeat(2, 400px);
+}
+
+.email-form > :nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.email-form > :nth-child(2) {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+}
+
+.email-form > .message {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+}
+
+.email-form > .buttons {
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+    display: flex;
+}
+
+.email-form > .captcha {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+}
+
+.email-form > div {
+    padding: 10px;
+}
+
+.email-form input,
+.email-form textarea {
+    margin-top: 10px;
+}
+
+.email-form > .email-input > .error-message {
+    color: rgba(255, 0, 0, 0.748);
+    font-size: 1em;
+    visibility: hidden;
+}
+
+.email-form > .email-input.invalid-input > .error-message {
+    visibility: visible;
+}
+
+.botonEnviar {
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 24px;
+    cursor: pointer;
+    font-family: accidentalpres;
+}
+
+.botonEnviar:hover {
+    background-color: white;
+    color: black;
+}
+
+.nav a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav a:hover {
+    text-decoration: none;
+}
+
+navbar.hidden {
+  bottom: -150px;
+}
+@media only screen and (max-width: 480px),
+    only screen and (orientation: vertical) {
+        .email-form {
+            display: grid;
+            grid-template: 90px 90px auto 100px 80px / repeat(2, 400px);
+        }
+}
