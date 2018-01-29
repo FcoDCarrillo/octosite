@@ -247,7 +247,7 @@ section.email-section:not(.success) > #success {
     text-decoration: none;
 }
 
-navbar.hidden {
+nav.hidden {
   bottom: -150px;
 }
 
