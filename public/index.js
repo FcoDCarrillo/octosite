@@ -1,11 +1,44 @@
-function isInViewport(element) {
-  var bounding = element.getBoundingClientRect();
+function throttle(func, wait, options) {
+  var context, args, result;
+  var timeout = null;
+  var previous = 0;
+  if (!options) options = {};
+  var later = function() {
+    previous = options.leading === false ? 0 : Date.now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
+  return function() {
+    var now = Date.now();
+    if (!previous && options.leading === false) previous = now;
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout && options.trailing !== false) {
+      timeout = setTimeout(later, remaining);
+    }
+    return result;
+  };
+};
 
-  // At least 50% of element is shown
-  return bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth);
+function isInViewport(element) {
+  const elementBounds = element.getBoundingClientRect();
+  const viewportHeight = (window.innerHeight || document.documentElement.clientHeight);
+  const viewportTop = ((window.pageYOffset || document.scrollTop)  - (document.clientTop || 0)) || 1;
+  const viewportBottom = viewportTop + viewportHeight;
+
+  const displayedArea = elementBounds.height - (elementBounds.bottom - viewportHeight);
+
+  return displayedArea > 0.5 * elementBounds.height;
 }
 
 function isValidEmail(email) {
@@ -14,16 +47,19 @@ function isValidEmail(email) {
 }
 
 (function() {
-  const emailSection = document.querySelector('div.email-form');
+  const emailSection = document.querySelector('.email-section');
   const navbar = document.querySelector('navbar.nav');
 
-  window.addEventListener('scroll', function() {
+  function handleScroll() {
     if(isInViewport(emailSection)) {
       navbar.classList.add('hidden');
     } else {
       navbar.classList.remove('hidden');
     }
-  });
+  }
+  const throttledHandleScroll = throttle(handleScroll, 100);
+
+  window.addEventListener('scroll', throttledHandleScroll);
 })();
 
 (function() {
@@ -54,14 +90,13 @@ function isValidEmail(email) {
   const emailField = form.elements.email;
   const messageField = form.elements.message;
   const formSection = document.querySelector('.email-section');
-  window.alert = null;
 
   function setFormClass(formClass) {
-    statusList.forEach(status => {
-      formSection.classList.remove(status);
-    });
-    formSection.classList.add(status);
-  }
+    for(let status in statusList) {
+      formSection.classList.remove(statusList[status]);
+    }
+    formSection.classList.add(formClass);
+  };
 
   function changeCurrentStatusTo(status) {
     switch(status) {
@@ -77,9 +112,13 @@ function isValidEmail(email) {
     }
   };
 
+  function isCaptchaChecked() {
+    return grecaptcha && grecaptcha.getResponse().length !== 0;
+  }
+
   document.querySelector('button.botonEnviar').addEventListener('click', (event) => {
     emailInput.classList.remove('invalid-input');
-    if(form.checkValidity()) {
+    if(form.checkValidity() && isCaptchaChecked()) {
       event.preventDefault();
       changeCurrentStatusTo(statusList.processing);
 
@@ -95,8 +134,7 @@ function isValidEmail(email) {
         message: messageField.value
       })
       .then((success) => {
-        changeCurrentStatusTo(statusList.success);        
-        console.log("Success!", success);
+        changeCurrentStatusTo(statusList.success);
       })
       .catch((error) => {
         changeCurrentStatusTo(statusList.default);
