@@ -2,7 +2,7 @@
 const firebaseFunctions = require('firebase-functions');
 const mailService = require('./mailService.js');
 
-async function sendAdminMail(newUser) {
+function sendAdminMail(newUser) {
   const addresses = ["fcocarsor@octatum.com", "roberto.ruiz@octatum.com", "octatumco@gmail.com"];
 
   let options = {
