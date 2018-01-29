@@ -118,8 +118,9 @@ function isValidEmail(email) {
 
   document.querySelector('button.botonEnviar').addEventListener('click', (event) => {
     emailInput.classList.remove('invalid-input');
-    if(form.checkValidity() && isCaptchaChecked()) {
+    if(form.checkValidity()) {
       event.preventDefault();
+      if(!isCaptchaChecked()) return;
       changeCurrentStatusTo(statusList.processing);
 
       if(!isValidEmail(emailField.value)) {
