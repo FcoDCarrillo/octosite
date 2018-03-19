@@ -9,7 +9,7 @@ function sendAdminMail(newUser) {
     from: 'service@octatum.com',
     to: addresses.join(','),
     subject: 'New message on Octatum\'s main site', 
-    html: `<ul><li>${newUser.name}</li><li>${newUser.email}</li><li>${newUser.message}</li></ul>`
+    html: `<ul><li>${newUser.name}</li><li>${newUser.email}</li><li>${newUser.message}</li><li>${newUser.date}</li></ul>`
   };
 
   mailService.sendMail(options);

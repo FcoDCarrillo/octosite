@@ -1,1 +1,1 @@
-Sitemap: https://www.octatum.com/
+Sitemap: https://www.octatum.com/sitemap.xml

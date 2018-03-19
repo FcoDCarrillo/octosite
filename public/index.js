@@ -48,7 +48,7 @@ function isValidEmail(email) {
 
 (function() {
   const emailSection = document.querySelector('.email-section');
-  const navbar = document.querySelector('navbar.nav');
+  const navbar = document.querySelector('nav.nav');
 
   function handleScroll() {
     if(isInViewport(emailSection)) {
@@ -116,6 +116,15 @@ function isValidEmail(email) {
     return grecaptcha && grecaptcha.getResponse().length !== 0;
   }
 
+  function getCurrentDateString() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    return `${dd}/${mm}/${yyyy}`;
+  }
+
   document.querySelector('button.botonEnviar').addEventListener('click', (event) => {
     emailInput.classList.remove('invalid-input');
     if(form.checkValidity()) {
@@ -132,7 +141,8 @@ function isValidEmail(email) {
       octatetsCollection.add({
         name: nameField.value,
         email: emailField.value,
-        message: messageField.value
+        message: messageField.value,
+        date: getCurrentDateString()
       })
       .then((success) => {
         changeCurrentStatusTo(statusList.success);
