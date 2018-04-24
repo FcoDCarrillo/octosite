@@ -27,8 +27,8 @@ section {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    font-family: accidentalpres;
-    transform: scale(1.05);    
+    font-family: 'Raleway', sans-serif;
+    transform: scale(1.05);
 }
 
 .logo-section {
@@ -39,7 +39,7 @@ section {
     width: 100%;
     align-items: center;
     justify-content: center;
-    font-family: accidentalpres;
+    font-family: 'Raleway', sans-serif;
     font-size: 36px;
 }
 
@@ -55,20 +55,6 @@ section {
     height: 200vh;
 }
 
-.slogan {
-    color: white;
-    margin-top: -5px;
-    position: relative;
-}
-
-.slogan:after {
-    content: url("assets/trazo.svg");
-    position: absolute;
-    transform: scale(.25);
-    bottom: -38px;
-    left: -15px;
-}
-
 .email-section {
     display: flex;
     position: relative;
@@ -77,7 +63,7 @@ section {
     width: 100%;
     align-items: center;
     justify-content: center;
-    font-family: accidentalpres;
+    font-family: 'Raleway', sans-serif;
     font-size: 24px;
     color: grey;
 }
@@ -114,6 +100,27 @@ textarea {
     transform: translateY(25px);
 }
 
+.flecha path {
+    stroke: #8a5d8d;
+}
+
+/** Navbar **/
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    height: 40vh;
+    width: auto;
+    padding: 30vh 0.7em;
+    margin-left: 0.5em;
+    top: 0;
+    left: 0;
+    transition: 0.3s linear all;
+}
+
 .nav i {
     color: white;
     font-size: 36px;
@@ -123,60 +130,77 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.3s ease-in-out all;
 }
 
-.nav {
+.nav a>i:not(.fa-envelope) {
+    transform: scale(1.2);
+}
+
+.nav a:hover>i:not(.fa-envelope) {
+    transform: scale(1.7);
+}
+
+.nav a:hover>i {
+    transform: scale(1.5);
+}
+
+.nav>a {
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: calc(100% - 10px);
-    max-width: calc(100% - 10px);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    padding-right: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    transition: 0.3s linear all;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-in-out all;
+    text-decoration: none;
+    cursor: pointer;
+    flex: 2;
+}
+
+.nav a:hover {
+    text-decoration: none;
+    flex: 3;
+}
+
+nav.hidden {
+    bottom: -150px;
 }
 
 .email-form {
     display: grid;
-    grid-template: 90px auto 100px 80px / repeat(2, 400px);
+    grid-template: 90px auto 100px / repeat(2, 400px);
 }
 
-.email-form > :nth-child(1) {
+.email-form> :nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
 
-.email-form > :nth-child(2) {
+.email-form> :nth-child(2) {
     grid-column: 2 / -1;
     grid-row: 1 / 2;
 }
 
-.email-form > .message {
+.email-form>.message {
     grid-column: 1 / -1;
     grid-row: 2 / 3;
 }
 
-.email-form > .buttons {
-    grid-column: 1 / -1;
-    grid-row: 4 / 5;
-    display: flex;
+.email-form>.buttons {
+    grid-column: 2 / -1;
+    grid-row: 3 / 4;
+    justify-self: right;
+    align-self: center;
 }
 
-.email-form > .captcha {
-    grid-column: 1 / -1;
+.email-form>.captcha {
+    grid-column: 1 / 2;
     grid-row: 3 / 4;
 }
 
-.email-form > div {
+.email-form>div {
     padding: 10px;
 }
 
-section.email-section > div {
+section.email-section>div {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -184,11 +208,11 @@ section.email-section > div {
     justify-content: center;
 }
 
-section.email-section:not(.default) > #default {
+section.email-section:not(.default)>#default {
     display: none;
 }
 
-section.email-section:not(.processing) > #processing {
+section.email-section:not(.processing)>#processing {
     display: none;
 }
 
@@ -200,8 +224,8 @@ section.email-section:not(.processing) > #processing {
     text-align: center;
 }
 
-section.email-section:not(.success) > #success {
-    display: none;    
+section.email-section:not(.success)>#success {
+    display: none;
 }
 
 .email-form input,
@@ -209,13 +233,13 @@ section.email-section:not(.success) > #success {
     margin-top: 10px;
 }
 
-.email-form > .email-input > .error-message {
+.email-form>.email-input>.error-message {
     color: rgba(255, 0, 0, 0.748);
     font-size: 1em;
     visibility: hidden;
 }
 
-.email-form > .email-input.invalid-input > .error-message {
+.email-form>.email-input.invalid-input>.error-message {
     visibility: visible;
 }
 
@@ -230,7 +254,7 @@ section.email-section:not(.success) > #success {
     display: inline-block;
     font-size: 24px;
     cursor: pointer;
-    font-family: accidentalpres;
+    font-family: 'Raleway', sans-serif;
 }
 
 .botonEnviar:hover {
@@ -238,66 +262,90 @@ section.email-section:not(.success) > #success {
     color: black;
 }
 
-.nav a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.nav a:hover {
-    text-decoration: none;
-}
-
-nav.hidden {
-  bottom: -150px;
-}
-
 @media only screen and (max-width: 800px),
-    only screen and (orientation: vertical) {
-        body {
-            max-width: 100vw;
-            overflow-x: hidden;
-        }
-
-        .email-form {
-            display: grid;
-            grid-template: 100px 100px auto 120px 100px / auto;
-        }
-    
-        .email-form > :nth-child(1) {
-            grid-row: 1 / 2;
-        }
-
-        .email-form > :nth-child(2) {
-            grid-row: 2 / 3;
-        }
-
-        .email-form > .message {
-            grid-row: 3 / 4;
-        }
-
-        .email-form > .captcha {
-            grid-row: 4 / 5;
-        }
-        
-        .email-form > .buttons {
-            grid-row: 5 / 6;
-            display: flex;
-        }
-
-        .email-form > div {
-            padding: 10px;
-            grid-column: 1 / 2 !important;            
-        }    
-
-        input {
-            max-width: 100%;
-        }
-        
-        #processing,
-        #success {
-            color: white;
-            font-size: 1.5em;
-            max-width: 90%;
-            text-align: center;
-        }
+only screen and (orientation: vertical) {
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    .email-form {
+        display: grid;
+        grid-template: 100px 100px auto 120px 100px / auto;
+    }
+    .email-form> :nth-child(1) {
+        grid-row: 1 / 2;
+    }
+    .email-form> :nth-child(2) {
+        grid-row: 2 / 3;
+    }
+    .email-form>.message {
+        grid-row: 3 / 4;
+    }
+    .email-form>.captcha {
+        grid-row: 4 / 5;
+    }
+    .email-form>.buttons {
+        grid-row: 5 / 6;
+        display: flex;
+    }
+    .email-form>div {
+        padding: 10px;
+        grid-column: 1 / 2 !important;
+    }
+    input {
+        max-width: 100%;
+    }
+    #processing,
+    #success {
+        color: white;
+        font-size: 1.5em;
+        max-width: 90%;
+        text-align: center;
+    }
 }
+
+/** Octotet **/
+/*
+.left-upper-tentacle {
+    animation: upper-left-tentacle 4s infinite;
+}
+
+@keyframes upper-left-tentacle {
+    0%, 10%, 90%, 100% {
+        transform: scaleY(1);
+    }
+
+    45%, 55% {
+        transform: scaleY(0.8) translateY(10px);
+    }
+}
+
+.left-bottom-tentacle {
+    animation: lower-left-tentacle 4s infinite;
+}
+
+@keyframes lower-left-tentacle {
+    0%, 10%, 90%, 100% {
+        transform: translateX(2px);
+    }
+
+    45%, 55% {
+        transform: translate(2px, -10px) scaleY(0.9);
+    }
+}
+
+.right-tentacle {
+    animation: right-tentacle 3s infinite;
+
+}
+
+@keyframes right-tentacle {
+    0%, 10%, 90%, 100% {
+        transform: none;
+    }
+
+    45%, 55% {
+        transform: scaleY(0.9);
+    }
+}
+*/

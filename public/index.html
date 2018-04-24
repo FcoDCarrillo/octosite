@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Desarrollo de sitios web enfocado en PyMEs" >
+    <meta name="description" content="Desarrollo de sitios web enfocado en PyMEs">
     <title>Octatum - Desarrollo web enfocado en PyMEs</title>
     <script src="https://use.fontawesome.com/1c5d11a09f.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="style.css">
     <link rel="canonical" href="https://www.octatum.com/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
@@ -21,20 +22,28 @@
     <div class="container">
         <section class="logo-section">
             <div>
-                <img src="assets/logo-octatum.svg" class="logo" alt="logo">
-            </div>
-            <div>
-                <img src="assets/nombre-octatum.svg" class="nombre" alt="nombre">
-            </div>
-            <div class="slogan">
-                discutimos ideas
+                <img src="assets/octatum-logo.svg" class="nombre" alt="nombre">
             </div>
         </section>
         <section class="email-section default" id="email-section">
             <div id="default">
                 <div class="frase">
                     ¿necesitas un sitio web?
-                    <img src="assets/flecha.svg" class="flecha" alt="">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="flecha" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 368.673 302" enable-background="new 0 0 368.673 302" xml:space="preserve">
+                        <g id="Extras" display="none">
+                        </g>
+                        <g id="Fonts">
+                        </g>
+                        <g id="Logos">
+                            <path fill="none" stroke="#FFFFFF" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="
+                            M31.27,36.487c0,0,136.146-45.717,227.26-4.509c133.682,60.462,12.884,244.706,12.884,244.706l44.41-12.475l-46.876,22.448
+                            l-10.418-50.278" />
+                        </g>
+                        <g id="Layer_4">
+                        </g>
+                    </svg>
                 </div>
                 <form id="subscribe-form">
                     <div class="forma">
@@ -65,8 +74,7 @@
             </div>
             <div id="processing">
                 <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-                <br>
-                tu mensaje se está enviando
+                <br> tu mensaje se está enviando
             </div>
             <div id="success">
                 hemos recibido tu mensaje, en breve nos pondremos en contacto contigo
@@ -74,6 +82,12 @@
         </section>
     </div>
     <nav class="nav">
+        <a href="https://www.facebook.com/octatum" target="_blank">
+            <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/octatum/" target="_blank">
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+        </a>
         <a data-section="email-section">
             <i class="fa fa-envelope" aria-hidden="true"></i>
         </a>
@@ -85,7 +99,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113177710-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
 
         gtag('config', 'UA-113177710-1');

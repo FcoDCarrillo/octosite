@@ -48,7 +48,7 @@ function isValidEmail(email) {
 
 (function() {
   const emailSection = document.querySelector('.email-section');
-  const navbar = document.querySelector('navbar.nav');
+  const navbar = document.querySelector('nav.nav');
 
   function handleScroll() {
     if(isInViewport(emailSection)) {
