@@ -48,7 +48,7 @@ section {
 }
 
 .nombre {
-    width: 300px;
+    width: 400px;
 }
 
 .container {
@@ -139,6 +139,10 @@ textarea {
 
 .nav a:hover>i:not(.fa-envelope) {
     transform: scale(1.7);
+}
+
+.nav a:not(:hover)>i {
+    opacity: 0.5;
 }
 
 .nav a:hover>i {
@@ -305,6 +309,7 @@ only screen and (orientation: vertical) {
 }
 
 /** Octotet **/
+
 /*
 .left-upper-tentacle {
     animation: upper-left-tentacle 4s infinite;
