@@ -6,19 +6,16 @@ export default {
   getSiteData: () => ({
     title: 'React Static',
   }),
-  getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    return [
-      {
-        path: '/',
-        component: 'src/containers/Home',
-      },
-      {
-        is404: true,
-        component: 'src/containers/404',
-      },
-    ]
-  },
+  getRoutes: () => [
+    {
+      path: '/',
+      component: 'src/containers/Home',
+    },
+    {
+      is404: true,
+      component: 'src/containers/404',
+    },
+  ],
   renderToHtml: (render, Comp, meta) => {
     const sheet = new ServerStyleSheet()
     const html = render(sheet.collectStyles(<Comp />))

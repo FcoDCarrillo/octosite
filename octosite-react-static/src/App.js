@@ -1,47 +1,27 @@
-import React from 'react'
-import { Router, Link } from 'react-static'
-import styled, { injectGlobal } from 'styled-components'
+import React, { Fragment } from 'react';
+import { Router, Link } from 'react-static';
+import styled, { ThemeProvider } from 'styled-components';
+import StyleReset from './components/StyleReset';
 import { hot } from 'react-hot-loader'
-//
-import Routes from 'react-static-routes'
+import DevTools from 'mobx-react-devtools';
+
+import Routes from 'react-static-routes';
 
 import Navbar from './components/Navbar';
-
-injectGlobal`
-  body {
-    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial,
-      'Lucida Grande', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-  }
-`
-
-const AppStyles = styled.div`
-  a {
-    text-decoration: none;
-    color: #108db8;
-    font-weight: bold;
-  }
-  .content {
-    padding: 1rem;
-  }
-
-  img {
-    max-width: 100%;
-  }
-`
+import { globalTheme } from './styles/themes';
 
 const App = () => (
-  <Router>
-    <AppStyles>
-      <Navbar />
-      <div className="content">
+  <Router>    
+    <ThemeProvider theme={globalTheme}>
+      <Fragment>
+        <DevTools />
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway:400,700" rel="stylesheet" />
+        <Navbar />
         <Routes />
-      </div>
-    </AppStyles>
+      </Fragment>
+    </ThemeProvider>
   </Router>
-)
+);
 
 export default hot(module)(App)
+
