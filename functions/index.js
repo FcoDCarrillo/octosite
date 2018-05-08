@@ -3,13 +3,32 @@ const firebaseFunctions = require('firebase-functions');
 const mailService = require('./mailService.js');
 
 function sendAdminMail(newUser) {
-  const addresses = ["fcocarsor@octatum.com", "roberto.ruiz@octatum.com", "octatumco@gmail.com"];
+  const addresses = ["francisco.carrillo@octatum.com", "roberto.ruiz@octatum.com", "octatumco@gmail.com"];
+  /* let admins = []
+  database.collection('admins').get()
+            .then(snapshot => {
+              snapshot.forEach((doc) => {
+                console.log(doc.id, '=>', doc.data());
+              });
+            })
+            .catch((err) => {
+              console.log('Error getting documents', err);
+            }); */
 
   let options = {
     from: 'service@octatum.com',
     to: addresses.join(','),
-    subject: 'New message on Octatum\'s main site', 
-    html: `<ul><li>${newUser.name}</li><li>${newUser.email}</li><li>${newUser.message}</li><li>${newUser.date}</li></ul>`
+    subject: 'Nuevo mensaje en el sitio oficial de Octatum', 
+    html: `
+          <div>
+            <p>Llegó un nuevo mensaje a la página oficial de Octatum.</p>
+            <ul>
+              <li>Nombre: ${newUser.name}</li>
+              <li>Correo: ${newUser.email}</li>
+              <li>Mensaje: ${newUser.message}</li>
+              <li>Fecha: ${newUser.date}</li>
+            </ul>
+          </div>`
   };
 
   mailService.sendMail(options);
