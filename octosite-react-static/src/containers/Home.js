@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { withSiteData } from 'react-static';
 import { observer } from 'mobx-react';
 
-
-import MouseCoordsStore from '../stores/MouseCoordsStore';
 import SectionOne from '../components/Home/SectionOne';
+import MouseCoordsStore from '../stores/MouseCoordsStore';
 import { throttle } from '../utils/functions';
 
 

@@ -12,7 +12,7 @@ export const bounceAnimation = keyframes`
 
 export const Section = styled.section`
   min-height: 600px;
-  height: 110vh;
+  height: 100vh;
   max-height: 800px;
 `;
 

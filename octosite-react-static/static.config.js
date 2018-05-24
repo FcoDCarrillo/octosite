@@ -9,7 +9,11 @@ export default {
   getRoutes: () => [
     {
       path: '/',
-      component: 'src/containers/Home',
+      component: 'src/containers/AboutUs',
+    },
+    {
+      path: '/Nosotros',
+      component: 'src/containers/AboutUs',
     },
     {
       is404: true,
